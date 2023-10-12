@@ -4,19 +4,30 @@ class Expendedor {
     private Deposito coca;
     private Deposito sprite;
     public DepositoM monVu;
+    public Deposito Snickers;
+    public Deposito Super8;
     private int precioBebidas;
+    private int precioDulces;
 
-    public Expendedor(int numBebibas,int precioBebidas) {
+    public Expendedor(int numBebibas,int precioBebidas,int numDulces,int precioDulces) {
         this.precioBebidas = precioBebidas;
         this.coca = new Deposito();
         this.sprite = new Deposito();
         this.monVu = new DepositoM();
+        this.Snickers= new Deposito();
+        this.Super8 = new Deposito();
         for (int i = 0; i < numBebibas; i++) {
             Bebida b1 = new CocaCola(i);
             Bebida b2 = new Sprite(i);
 
             coca.addBebida(b1);
             sprite.addBebida(b2);
+        }
+        for(int i=0; i<numDulces;i++){
+            Dulces d1 = new Snickers(i);
+            Dulces d2 = new Super8(i);
+            Snickers.addBebida(d1);
+            Super8.addBebida(d2);
         }
     }
     public Bebida comprarBebida(Moneda moneda,int selector){
