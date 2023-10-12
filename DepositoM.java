@@ -1,11 +1,12 @@
 import java.util.ArrayList;
+import java.util.List;
 
-class DepositoM{
-    private ArrayList<Moneda> depositomonedas;
+class DepositoM<T extends Moneda>{
+    private List<T>depositomonedas;
     public DepositoM(){
-        depositomonedas = new ArrayList<Moneda>();
+        depositomonedas = new ArrayList<>();
     }
-    public Moneda addMoneda(Moneda moneda){
+    public Moneda addMoneda(T moneda){
         depositomonedas.add(moneda);
         return moneda;
     }

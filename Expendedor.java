@@ -20,14 +20,14 @@ class Expendedor {
             Bebida b1 = new CocaCola(i);
             Bebida b2 = new Sprite(i);
 
-            coca.addBebida(b1);
-            sprite.addBebida(b2);
+            coca.addProducto(b1);
+            sprite.addProducto(b2);
         }
         for(int i=0; i<numDulces;i++){
             Dulces d1 = new Snickers(i);
             Dulces d2 = new Super8(i);
-            Snickers.addBebida(d1);
-            Super8.addBebida(d2);
+            Snickers.addProducto(d1);
+            Super8.addProducto(d2);
         }
     }
     public Bebida comprarBebida(Moneda moneda,int selector){
@@ -38,10 +38,10 @@ class Expendedor {
         else {
             switch (selector){
                 case 1:
-                    b=coca.getBebida();
+                    b=coca.getProducto();
                     break;
                 case 2:
-                    b=sprite.getBebida();
+                    b=sprite.getProducto();
                     break;
                 default:
                     b= null;

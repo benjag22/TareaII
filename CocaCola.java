@@ -1,9 +1,10 @@
-class CocaCola extends Bebida{
+public class CocaCola extends Bebida {
+    private int nserie;
     public CocaCola(int nserie) {
         super(nserie);
     }
-
-    public String beber(){
-        return"cocacola";
+    @Override
+    public String sabor() {
+        return super.sabor()+"cocacola";
     }
 }

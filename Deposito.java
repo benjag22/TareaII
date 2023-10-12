@@ -1,20 +1,26 @@
 import java.util.ArrayList;
 
-class Deposito{
-    private ArrayList<Bebida> deposito;
-    public Deposito(){
-        deposito = new ArrayList<Bebida>();
+import java.util.ArrayList;
+import java.util.List;
+
+class Deposito<T extends Producto> {
+    private List<T> deposito;
+
+    public Deposito() {
+        deposito=new ArrayList<>();
     }
-    public Bebida addBebida(Bebida bebida){
-        deposito.add(bebida);
-        return bebida;
+
+    public T addProducto(T producto) {
+        deposito.add(producto);
+        return producto;
     }
-    public Bebida getBebida(){
-        if(deposito.size()==0){
+
+    public T getProducto() {
+        if (deposito.isEmpty()) {
             return null;
-        }
-        else{
+        } else {
             return deposito.remove(0);
         }
     }
 }
+

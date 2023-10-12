@@ -1,9 +1,10 @@
-class Sprite extends Bebida{
+public class Sprite extends Bebida{
+    private int nserie;
     public Sprite(int nserie){
         super(nserie);
     }
-    public String beber(){
-
-        return "sprite";
+    @Override
+    public String sabor() {
+        return super.sabor()+"sprite";
     }
 }
