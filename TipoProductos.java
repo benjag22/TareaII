@@ -3,7 +3,7 @@ public enum TipoProductos {
     SPRITE(500),
     FANTA(700),
     SNICKER(200),
-    SUPER8(100);
+    SUPER8(300);
     private int precio;
     TipoProductos(int precio){
         this.precio=precio;

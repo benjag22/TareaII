@@ -5,18 +5,17 @@ class Expendedor {
     public DepositoM<Moneda> monVu;
     public Deposito<Dulces> snickers;
     public Deposito<Dulces> super8;
-    public Expendedor(int numBebibas,int numDulces) {
+    public Expendedor(int numProductos) {
         this.coca = new Deposito<>();
         this.sprite = new Deposito<>();
         this.monVu = new DepositoM<>();
         this.snickers= new Deposito<>();
         this.super8 = new Deposito<>();
-        for (int i = 0; i < numBebibas; i++) {
+        this.fanta= new Deposito<>();
+        for (int i = 0; i < numProductos; i++) {
             coca.addProducto(new CocaCola(i));
             sprite.addProducto(new Sprite(10+i));
             fanta.addProducto(new Fanta(20+i));
-        }
-        for(int i=0; i<numDulces;i++){
             snickers.addProducto(new Snickers(30+i));
             super8.addProducto(new Super8(40+i));
         }
@@ -52,34 +51,63 @@ class Expendedor {
                 return null;
             }
             else {
-                if ((moneda.getValor() < TipoProductos.COCACOLA.getPrecio()) || (moneda.getValor()<precioDulces)) {
+                if ((b instanceof CocaCola) && (moneda.getValor() < TipoProductos.COCACOLA.getPrecio())) {
                     monVu.addMoneda(moneda);
-                    if(b==coca.getProducto()) {
-                        coca.addProducto((CocaCola)b);
-                    }
-                    else if(b==sprite.getProducto()){
-                        sprite.addProducto((Sprite)b);
-                    }
-                    else if(b==fanta.getProducto()){
-                        fanta.addProducto((Fanta)b);
-                    }
-                    else if(b==snickers.getProducto()){
-                        snickers.addProducto((Snickers)b);
-                    }
-                    else if(b==super8.getProducto()){
-                        super8.addProducto((Super8)b);
-                    }
+                    coca.addProducto((Bebida)b);
                     return null;
                 }
-                else{
-                    if(selector==1||selector==2||selector==3) {
-                        for (int i = 0; i < (moneda.getValor() - precioBebidas) / 100; i++) {
+
+                 if ((moneda.getValor() < TipoProductos.SPRITE.getPrecio()) && (b instanceof Sprite)) {
+                    monVu.addMoneda(moneda);
+                    sprite.addProducto((Sprite)b);
+                    return null;
+                }
+
+                else if ((moneda.getValor() < TipoProductos.FANTA.getPrecio()) && (b instanceof Fanta)){
+                    monVu.addMoneda(moneda);
+                    fanta.addProducto((Fanta)b);
+                    return null;
+                }
+
+                else if ((moneda.getValor() < TipoProductos.SNICKER.getPrecio()) && (b instanceof Snickers)){
+                    monVu.addMoneda(moneda);
+                    snickers.addProducto((Snickers)b);
+                    return null;
+                }
+
+                else if ((moneda.getValor() < TipoProductos.SUPER8.getPrecio()) && (b instanceof Super8)){
+                    monVu.addMoneda(moneda);
+                    super8.addProducto((Super8)b);
+                    return null;
+                }
+
+                else {
+                    if(selector==1) {
+                        for (int i = 0; i < (moneda.getValor() - TipoProductos.COCACOLA.getPrecio()) / 100; i++) {
+                            monVu.addMoneda(new Moneda100());
+                        }
+                        return b;
+                    }
+                    else if(selector==2) {
+                        for (int i = 0; i < (moneda.getValor() - TipoProductos.SPRITE.getPrecio()) / 100; i++) {
+                            monVu.addMoneda(new Moneda100());
+                        }
+                        return b;
+                    }
+                    else if(selector==3) {
+                        for (int i = 0; i < (moneda.getValor() - TipoProductos.FANTA.getPrecio()) / 100; i++) {
+                            monVu.addMoneda(new Moneda100());
+                        }
+                        return b;
+                    }
+                    else if(selector==4) {
+                        for (int i = 0; i < (moneda.getValor() - TipoProductos.SNICKER.getPrecio()) / 100; i++) {
                             monVu.addMoneda(new Moneda100());
                         }
                         return b;
                     }
                     else{
-                        for (int i = 0; i < (moneda.getValor() - precioDulces) / 100; i++) {
+                        for (int i = 0; i < (moneda.getValor() - TipoProductos.SUPER8.getPrecio()) / 100; i++) {
                             monVu.addMoneda(new Moneda100());
                         }
                         return b;
