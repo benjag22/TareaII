@@ -1,39 +1,28 @@
 class Expendedor {
-    TipoProductos producto;
     private Deposito<Bebida> coca;
     private Deposito<Bebida> sprite;
     private Deposito<Bebida> fanta;
     public DepositoM<Moneda> monVu;
     public Deposito<Dulces> snickers;
     public Deposito<Dulces> super8;
-    private int precioBebidas;
-    private int precioDulces;
-
-    public Expendedor(int numBebibas,int precioBebidas,int numDulces,int precioDulces) {
-        this.precioBebidas = precioBebidas;
+    public Expendedor(int numBebibas,int numDulces) {
         this.coca = new Deposito<>();
         this.sprite = new Deposito<>();
         this.monVu = new DepositoM<>();
         this.snickers= new Deposito<>();
         this.super8 = new Deposito<>();
         for (int i = 0; i < numBebibas; i++) {
-            Bebida b1 = new CocaCola(i);
-            Bebida b2 = new Sprite(i);
-            Bebida b3 = new Fanta(i);
-
-            coca.addProducto(b1);
-            sprite.addProducto(b2);
-            fanta.addProducto(b3);
+            coca.addProducto(new CocaCola(i));
+            sprite.addProducto(new Sprite(10+i));
+            fanta.addProducto(new Fanta(20+i));
         }
         for(int i=0; i<numDulces;i++){
-            Dulces d1 = new Snickers(i);
-            Dulces d2 = new Super8(i);
-            snickers.addProducto(d1);
-            super8.addProducto(d2);
+            snickers.addProducto(new Snickers(30+i));
+            super8.addProducto(new Super8(40+i));
         }
     }
     public Producto comprarProducto(Moneda moneda,int selector){
-        Producto b;
+        Producto b=null;
         if(moneda==null) {
             return null;
         }
@@ -63,7 +52,7 @@ class Expendedor {
                 return null;
             }
             else {
-                if ((moneda.getValor() < precioBebidas) || (moneda.getValor()<precioDulces)) {
+                if ((moneda.getValor() < TipoProductos.COCACOLA.getPrecio()) || (moneda.getValor()<precioDulces)) {
                     monVu.addMoneda(moneda);
                     if(b==coca.getProducto()) {
                         coca.addProducto((CocaCola)b);

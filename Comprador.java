@@ -3,7 +3,7 @@ class Comprador{
     private int vuelto;
 
     public Comprador(Moneda m,int cualProducto,Expendedor exp) {
-        Producto b = exp.comprarBebida(m, cualProducto);
+        Producto b = exp.comprarProducto(m, cualProducto);
         if(b==null){
             sonido=null;
             if(m==null){
