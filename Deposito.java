@@ -23,4 +23,3 @@ class Deposito<T extends Producto> {
         }
     }
 }
-
