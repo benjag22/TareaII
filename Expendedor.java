@@ -1,6 +1,5 @@
 class Expendedor {
-    public static final int COCA=1;
-    public static final int SPRITE=2;
+    TipoProductos producto;
     private Deposito<Bebida> coca;
     private Deposito<Bebida> sprite;
     private Deposito<Bebida> fanta;
@@ -33,7 +32,7 @@ class Expendedor {
             super8.addProducto(d2);
         }
     }
-    public Producto comprarBebida(Moneda moneda,int selector){
+    public Producto comprarProducto(Moneda moneda,int selector){
         Producto b;
         if(moneda==null) {
             return null;
