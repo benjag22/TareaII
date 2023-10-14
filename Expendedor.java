@@ -20,10 +20,10 @@ class Expendedor {
             super8.addProducto(new Super8(40+i));
         }
     }
-    public Producto comprarProducto(Moneda moneda,int selector){
+    public Producto comprarProducto(Moneda moneda,int selector) throws PagoInsuficienteException,PagoIncorrectoException{
         Producto b=null;
         if(moneda==null) {
-            return null;
+            throw new PagoIncorrectoException("Error: Pago Incorrecto");
         }
         else {
             switch (selector){
@@ -52,33 +52,28 @@ class Expendedor {
             }
             else {
                 if ((b instanceof CocaCola) && (moneda.getValor() < TipoProductos.COCACOLA.getPrecio())) {
-                    monVu.addMoneda(moneda);
                     coca.addProducto((Bebida)b);
-                    return null;
+                    throw new PagoInsuficienteException("Error:Pago Insuficiente");
                 }
 
                  if ((moneda.getValor() < TipoProductos.SPRITE.getPrecio()) && (b instanceof Sprite)) {
-                    monVu.addMoneda(moneda);
                     sprite.addProducto((Sprite)b);
-                    return null;
+                     throw new PagoInsuficienteException("Error:Pago Insuficiente");
                 }
 
                 else if ((moneda.getValor() < TipoProductos.FANTA.getPrecio()) && (b instanceof Fanta)){
-                    monVu.addMoneda(moneda);
                     fanta.addProducto((Fanta)b);
-                    return null;
+                     throw new PagoInsuficienteException("Error:Pago Insuficiente");
                 }
 
                 else if ((moneda.getValor() < TipoProductos.SNICKER.getPrecio()) && (b instanceof Snickers)){
-                    monVu.addMoneda(moneda);
                     snickers.addProducto((Snickers)b);
-                    return null;
+                     throw new PagoInsuficienteException("Error:Pago Insuficiente");
                 }
 
                 else if ((moneda.getValor() < TipoProductos.SUPER8.getPrecio()) && (b instanceof Super8)){
-                    monVu.addMoneda(moneda);
                     super8.addProducto((Super8)b);
-                    return null;
+                     throw new PagoInsuficienteException("Error:Pago Insuficiente");
                 }
 
                 else {

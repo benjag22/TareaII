@@ -2,16 +2,13 @@ class Comprador{
     private String sonido;
     private int vuelto;
 
-    public Comprador(Moneda m,int cualProducto,Expendedor exp) {
+    public Comprador(Moneda m,int cualProducto,Expendedor exp)throws NoHayProductoException, PagoIncorrectoException, PagoInsuficienteException {
         Producto b = exp.comprarProducto(m, cualProducto);
         if(b==null){
-            sonido=null;
-            if(m==null){
-                vuelto =0;
-            }
-            else{
-                vuelto = exp.getVuelto().getValor();
-            }
+            throw new NoHayProductoException("No hay producto deseado en la maquina");
+        }
+        if(m==null){
+            throw new PagoIncorrectoException("No ingresaste una moneda valida");
         }
         else{
             sonido=b.sabor();
