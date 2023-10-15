@@ -1,4 +1,4 @@
-class Moneda1500 extends Moneda{
+class Moneda1500 extends Moneda implements Comparable<Moneda> {
     public Moneda1500(){
         super();
     }
@@ -6,4 +6,8 @@ class Moneda1500 extends Moneda{
         return 1500;
     }
 
+    @Override
+    public int compareTo(Moneda otraMoneda) {
+        return Integer.compare(this.getValor(), otraMoneda.getValor());
+    }
 }
