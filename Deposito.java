@@ -1,21 +1,17 @@
 import java.util.ArrayList;
 
-import java.util.ArrayList;
-import java.util.List;
-
-class Deposito<T extends Producto> {
-    private List<T> deposito;
+class Deposito<T> {
+    private ArrayList<T> deposito;
 
     public Deposito() {
-        deposito=new ArrayList<>();
+        deposito= new ArrayList<>();
     }
 
-    public T addProducto(T producto) {
-        deposito.add(producto);
-        return producto;
+    public void addElemento(T elemento) {
+        deposito.add(elemento);
     }
 
-    public T getProducto() {
+    public T getElemento() {
         if (deposito.isEmpty()) {
             return null;
         } else {

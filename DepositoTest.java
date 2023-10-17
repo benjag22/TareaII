@@ -9,20 +9,20 @@ class DepositoTest {
     void setUp(){
         depositoGenerico = new Deposito<>();
         for(int i=1;i<=2;i++){
-            depositoGenerico.addProducto(new CocaCola(i));
+            depositoGenerico.addElemento(new CocaCola(i));
         }
     }
     @Test
     @DisplayName("Test para sacar una bebida")
     void getBebida(){
-        assertNotNull(depositoGenerico.getProducto());
+        assertNotNull(depositoGenerico.getElemento());
     }
     @Test
     @DisplayName("Test para verificar si está vacío el depósito")
     void getBebidaVacio() {
-        depositoGenerico.getProducto();
-        depositoGenerico.getProducto();
+        depositoGenerico.getElemento();
+        depositoGenerico.getElemento();
 
-        assertNull(depositoGenerico.getProducto());
+        assertNull(depositoGenerico.getElemento());
     }
 }
