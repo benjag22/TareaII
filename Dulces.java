@@ -1,4 +1,4 @@
-abstract class Dulces implements Producto{
+abstract class Dulces extends Producto{
     private int nserie;
     public Dulces(int nserie){
         this.nserie=nserie;
