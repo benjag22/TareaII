@@ -1,10 +1,19 @@
 class Expendedor {
+    /**Deposito de cocacola*/
     private Deposito<Bebida> coca;
+    /**Deposito de sprite*/
     private Deposito<Bebida> sprite;
+    /**Deposito de fanta*/
     private Deposito<Bebida> fanta;
+    /**Deposito de monedas*/
     public Deposito<Moneda> monVu;
+    /**Deposito de snickers*/
     public Deposito<Dulces> snickers;
+    /**Deposito de super8*/
     public Deposito<Dulces> super8;
+    /**Constructor llena los depositos de los productos
+     * @param numProductos
+     */
     public Expendedor(int numProductos) {
         this.coca = new Deposito<>();
         this.sprite = new Deposito<>();
@@ -20,6 +29,16 @@ class Expendedor {
             super8.addElemento(new Super8(40+i));
         }
     }
+    /**
+     * Este método se utiliza para realizar la compra de un producto en la máquina expendedora,
+     * gestionar el pago y calcular el cambio, si corresponde. También verifica si la moneda y
+     * el producto seleccionado son válidos.
+     * @param moneda La moneda utilizada para realizar la compra.
+     * @param selector El selector que representa el producto deseado.
+     * @return El producto comprado, o null si no está disponible.
+     * @throws PagoIncorrectoException Si la moneda es nula o no válida.
+     * @throws PagoInsuficienteException Si el pago es insuficiente para el producto.
+     */
     public Producto comprarProducto(Moneda moneda,int selector) throws PagoInsuficienteException,PagoIncorrectoException{
         Producto b=null;
         if(moneda==null) {
@@ -111,6 +130,9 @@ class Expendedor {
             }
         }
     }
+    /**Devuelve la moneda para el vuelto a calcular
+     * @return moneda
+     */
     public Moneda getVuelto(){
         return monVu.getElemento();
     }
